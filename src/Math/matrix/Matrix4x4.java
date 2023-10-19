@@ -2,7 +2,7 @@ package Math.matrix;
 
 import Math.vector.Vector4D;
 
-public class Matrix4x4 extends Matrix{
+public class Matrix4x4{
     private double[][] matrix = new double[4][4];
 
     public Matrix4x4(double[][] data) {
@@ -10,6 +10,10 @@ public class Matrix4x4 extends Matrix{
             throw new IllegalArgumentException("Matrix must be 4x4");
         }
         this.matrix = data;
+    }
+
+    public double[][] getMatrix() {
+        return matrix;
     }
 
     // Сложение матриц

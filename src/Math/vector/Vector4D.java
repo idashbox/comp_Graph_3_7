@@ -1,6 +1,6 @@
 package Math.vector;
 
-public class Vector4D extends Vector{
+public class Vector4D{
     private double x;
     private double y;
     private double z;

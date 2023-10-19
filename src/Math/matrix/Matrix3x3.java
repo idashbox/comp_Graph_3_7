@@ -2,7 +2,8 @@ package Math.matrix;
 
 import Math.vector.Vector3D;
 
-public class Matrix3x3 extends Matrix{
+public class Matrix3x3{
+
     private double[][] matrix = new double[3][3];
 
     public Matrix3x3(double[][] data) {
@@ -10,6 +11,10 @@ public class Matrix3x3 extends Matrix{
             throw new IllegalArgumentException("Matrix must be 3x3");
         }
         this.matrix = data;
+    }
+
+    public double[][] getMatrix() {
+        return matrix;
     }
     // Сложение матриц
     public Matrix3x3 add(Matrix3x3 other) {
