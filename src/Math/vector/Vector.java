@@ -1,10 +1,8 @@
 package Math.vector;
 
 public abstract class Vector {
-//    – Операции сложения и вычитания
-//– Умножения и деления на скаляр
-//– Вычисления длины
-//– Нормализации
-//– Скалярного произведения
-//– Векторного произведения (Для вектора размерности 3)
+    public abstract double get(int index);
+
+    public abstract double length();
+
 }
