@@ -1,5 +1,6 @@
 package Math.tests;
 
+import Math.matrix.Matrix3x3;
 import Math.matrix.Matrix4x4;
 import Math.vector.Vector4D;
 import org.junit.Test;
@@ -164,5 +165,18 @@ public class Matrix4x4Test {
         };
 
         assertArrayEquals(expectedData, data);
+    }
+    @Test
+    public void testDetermination() {
+        double[][] data = {
+                {10, 34, 5, 45},
+                {28, 12, 93, 3},
+                {7, 48, 200, 10},
+                {41, 6, 23, 18}
+        };
+        Matrix4x4 matrix = new Matrix4x4(data);
+
+        double result = matrix.determinate();
+        assertEquals(308450, result, 0.001);
     }
 }

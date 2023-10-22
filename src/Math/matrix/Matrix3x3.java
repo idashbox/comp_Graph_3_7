@@ -8,7 +8,7 @@ public class Matrix3x3{
 
     public Matrix3x3(double[][] data) {
         if (data.length != 3 || data[0].length != 3) {
-            throw new IllegalArgumentException("Matrix must be 3x3");
+            throw new IllegalArgumentException("Матрица должна быть 3x3");
         }
         this.matrix = data;
     }
@@ -41,7 +41,7 @@ public class Matrix3x3{
     //Умножение на вектор3Д
     public Vector3D multiply(Vector3D vector) {
         if (vector == null) {
-            throw new NullPointerException("Vector cannot be null");
+            throw new NullPointerException("Вектор не может быть нулевым");
         }
         double[] result = new double[3];
         for (int i = 0; i < 3; i++) {
@@ -96,5 +96,8 @@ public class Matrix3x3{
                 {0, 0, 0}
         };
         return new Matrix3x3(zeroMatrix);
+    }
+    public double determinate(){
+        return (matrix[0][0]*matrix[1][1]*matrix[2][2]-(matrix[0][2]*matrix[1][1]*matrix[2][0]) +matrix[0][1]*matrix[1][2]*matrix[2][0]-(matrix[0][1]*matrix[1][0]*matrix[2][2]) +matrix[0][2]*matrix[1][0]*matrix[2][1]-(matrix[0][0]*matrix[1][2]*matrix[2][1]));
     }
 }

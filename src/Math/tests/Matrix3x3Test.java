@@ -32,8 +32,11 @@ public class Matrix3x3Test {
                 {10, 10, 10}
         };
         Matrix3x3 expected = new Matrix3x3(expectedData);
-
-        assertEquals(expected, result);
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; i < 3; i++) {
+                assertEquals(expected.getMatrix()[i][j], result.getMatrix()[i][j], 0.001);
+            }
+        }
     }
 
     @Test
@@ -60,7 +63,11 @@ public class Matrix3x3Test {
         };
         Matrix3x3 expected = new Matrix3x3(expectedData);
 
-        assertEquals(expected, result);
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; i < 3; i++) {
+                assertEquals(expected.getMatrix()[i][j], result.getMatrix()[i][j], 0.001);
+            }
+        }
     }
 
     @Test
@@ -77,7 +84,9 @@ public class Matrix3x3Test {
 
         Vector3D expected = new Vector3D(20, 47, 74);
 
-        assertEquals(expected, result);
+        for (int i = 0; i < 3; i++){
+                assertEquals(expected.get(i), result.get(i), 0.001);
+            }
     }
 
     @Test
@@ -104,7 +113,11 @@ public class Matrix3x3Test {
         };
         Matrix3x3 expected = new Matrix3x3(expectedData);
 
-        assertEquals(expected, result);
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; i < 3; i++) {
+                assertEquals(expected.getMatrix()[i][j], result.getMatrix()[i][j], 0.001);
+            }
+        }
     }
 
     @Test
@@ -125,7 +138,11 @@ public class Matrix3x3Test {
         };
         Matrix3x3 expected = new Matrix3x3(expectedData);
 
-        assertEquals(expected, result);
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; i < 3; i++) {
+                assertEquals(expected.getMatrix()[i][j], result.getMatrix()[i][j], 0.001);
+            }
+        }
     }
 
     @Test
@@ -156,5 +173,17 @@ public class Matrix3x3Test {
         double[][] actualData = zero.getMatrix();
 
         assertArrayEquals(expectedData, actualData);
+    }
+    @Test
+    public void testDetermination() {
+        double[][] data = {
+                {10, 34, 5},
+                {28, 12, 93},
+                {7, 48, 200}
+        };
+        Matrix3x3 matrix = new Matrix3x3(data);
+
+        double result = matrix.determinate();
+        assertEquals(-182606, result, 0.001);
     }
 }
