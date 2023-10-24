@@ -179,4 +179,17 @@ public class Matrix4x4Test {
         double result = matrix.determinate();
         assertEquals(308450, result, 0.001);
     }
+    @Test
+    public void testDetermination1() {
+        double[][] data = {
+                {1, 7, 1, 8},
+                {4, 6, 11, 8},
+                {1, 3, 1, 8},
+                {2, 5, 9, 1}
+        };
+        Matrix4x4 matrix = new Matrix4x4(data);
+
+        double result = matrix.determinate();
+        assertEquals(252, result, 0.001);
+    }
 }

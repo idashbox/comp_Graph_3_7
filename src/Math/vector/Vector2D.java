@@ -3,6 +3,7 @@ package Math.vector;
 public class Vector2D{
     private double x;
     private double y;
+    private static double eps = 1e-4;
 
     public Vector2D(double x, double y) {
         this.x = x;
@@ -14,8 +15,7 @@ public class Vector2D{
             case 0: return x;
             case 1: return y;
         }
-//        System.out.println("Index may be in 0 to 1");
-        return 0;
+    throw new IllegalArgumentException("Индекс выходит за границы");
     }
 
     // Сложение векторов
@@ -35,8 +35,8 @@ public class Vector2D{
 
     // Деление на скаляр
     public Vector2D divide(double scalar) {
-        if (scalar == 0) {
-            throw new ArithmeticException("Division by zero");
+        if (Math.abs(scalar) < eps) {
+            throw new ArithmeticException("Деление на ноль");
         }
         return new Vector2D(this.x / scalar, this.y / scalar);
     }
@@ -49,7 +49,7 @@ public class Vector2D{
     // Нормализация вектора
     public Vector2D normalize() {
         double len = length();
-        if (len == 0) {
+        if (Math.abs(len) < eps) {
             return new Vector2D(0, 0);
         }
         return new Vector2D(x / len, y / len);

@@ -5,6 +5,7 @@ public class Vector4D{
     private double y;
     private double z;
     private double w;
+    private static double eps = 1e-4;
 
     public Vector4D(double x, double y, double z, double w) {
         this.x = x;
@@ -20,8 +21,7 @@ public class Vector4D{
             case 2: return z;
             case 3: return w;
         }
-//        System.out.println("Index may be in 0 to 3");
-        return 0;
+        throw new IllegalArgumentException("Индекс выходит за границы");
     }
     // Сложение векторов
     public Vector4D add(Vector4D other) {
@@ -40,8 +40,8 @@ public class Vector4D{
 
     // Деление на скаляр
     public Vector4D divide(double scalar) {
-        if (scalar == 0) {
-            throw new ArithmeticException("Division by zero");
+        if (Math.abs(scalar) < eps) {
+            throw new ArithmeticException("Деление на ноль");
         }
         return new Vector4D(this.x / scalar, this.y / scalar, this.z / scalar, this.w / scalar);
     }
@@ -54,7 +54,7 @@ public class Vector4D{
     // Нормализация вектора
     public Vector4D normalize() {
         double length = length();
-        if (length == 0) {
+        if (Math.abs(length) < eps) {
             return new Vector4D(0, 0, 0, 0);
         }
         return new Vector4D(x / length, y / length, z / length, w / length);

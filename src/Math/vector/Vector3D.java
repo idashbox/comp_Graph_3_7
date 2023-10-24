@@ -4,6 +4,7 @@ public class Vector3D{
     private double x;
     private double y;
     private double z;
+    private static double eps = 1e-4;
 
     public Vector3D(double x, double y, double z) {
         this.x = x;
@@ -16,8 +17,7 @@ public class Vector3D{
             case 1: return y;
             case 2: return z;
         }
-//        System.out.println("Index may be in 0 to 2");
-        return 0;
+        throw new IllegalArgumentException("Индекс выходит за границы");
     }
 
     // Сложение векторов
@@ -37,8 +37,8 @@ public class Vector3D{
 
     // Деление на скаляр
     public Vector3D divide(double scalar) {
-        if (scalar == 0) {
-            throw new ArithmeticException("Division by zero");
+        if (Math.abs(scalar) < eps) {
+            throw new ArithmeticException("Деление на ноль");
         }
         return new Vector3D(this.x / scalar, this.y / scalar, this.z / scalar);
     }
@@ -51,7 +51,7 @@ public class Vector3D{
     // Нормализация вектора
     public Vector3D normalize() {
         double len = length();
-        if (len == 0) {
+        if (Math.abs(len) < eps) {
             return new Vector3D(0, 0, 0);
         }
         return new Vector3D(x / len, y / len, z / len);
